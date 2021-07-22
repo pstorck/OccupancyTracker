@@ -50,23 +50,27 @@ body {
   margin: none;
 }
 
-#list-body ul{
+#list-body-ul {
   list-style-type: none;
   padding-inline-start: 0;
 }
 
-#list-body li{
-  border-bottom: 1px solid lightgrey;
-  padding: 25px;
-  margin:none;
-  background-color: #007AA0;
-  color: white;
+#list-body-li {
+  border-bottom: 1px solid black;
 }
 
 .Collapsible__contentInner {
   margin-top: 5%;
 }
 
-.building-info ul{
+
+#building-info {
   list-style-type: disc;
+  border-bottom: none;
+}
+
+.trigger {
+  background-color: #282c34;
+  padding: 25px;
+  color: white;
 }

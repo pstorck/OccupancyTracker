@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createElement } from 'react';
 import Collapsible from 'react-collapsible';
 import ProgressBar from "@ramonak/react-progress-bar";
 import './App.css';
@@ -9,19 +9,27 @@ function updateProgressColor(occupants) {
   else return 'red';
 }
 
+function createTriggerElement(name, occupants) {
+  return (
+    <div class="trigger">
+      <p>{name}</p>
+      <ProgressBar bgColor={updateProgressColor(occupants)} class="progress-bar" completed={occupants} />
+    </div>
+  )
+}
+
 const App = () => {
   const buildings = [{name: "Rec Center"}, {name: "Admin Buiding"}, {name: "Dining Hall"}]
   buildings.forEach(building => {building.occupants = Math.floor(Math.random() * 100);})
   return (
     <div id="list-body">
-    <ul>
+    <ul id="list-body-ul">
       {
       buildings.map(building => (
-        <li class="building-info">
-            <Collapsible trigger={building.name} triggerStyle={{backgroundColor: "#007AA0", color: 'white'}}>  
-            <ProgressBar bgColor={updateProgressColor(building.occupants)} class="progress-bar" completed={building.occupants} />
+        <li id="list-body-li">
+            <Collapsible trigger={createTriggerElement(building.name, building.occupants)}>  
             <p>This is a building. You can do these activities here. Enjoy your time at the builidng!</p>
-            <ul>
+            <ul class="building-info">
               <li>Address:</li>
               <li>Hours:</li>
               <li>Amenities:</li>
