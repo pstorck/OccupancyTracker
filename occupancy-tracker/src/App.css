@@ -70,7 +70,9 @@ body {
 }
 
 .trigger {
-  background-color: #282c34;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #007AA0;
   padding: 25px;
   color: white;
 }

@@ -1,17 +1,17 @@
-import React, { createElement } from 'react';
+import React from 'react';
 import Collapsible from 'react-collapsible';
 import ProgressBar from "@ramonak/react-progress-bar";
 import './App.css';
 
 function updateProgressColor(occupants) {
-  if (occupants < 50) return 'green';
-  if (occupants < 75) return '#CCCC00';
+  if (occupants <= 50) return 'green';
+  if (occupants <= 75) return '#CCCC00';
   else return 'red';
 }
 
 function createTriggerElement(name, occupants) {
   return (
-    <div class="trigger">
+    <div class="container">
       <p>{name}</p>
       <ProgressBar bgColor={updateProgressColor(occupants)} class="progress-bar" completed={occupants} />
     </div>
