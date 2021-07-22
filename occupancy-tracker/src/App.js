@@ -11,7 +11,7 @@ function updateProgressColor(occupants) {
 
 function createTriggerElement(name, occupants) {
   return (
-    <div class="container">
+    <div class="trigger">
       <p>{name}</p>
       <ProgressBar bgColor={updateProgressColor(occupants)} class="progress-bar" completed={occupants} />
     </div>
