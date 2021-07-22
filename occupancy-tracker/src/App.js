@@ -19,7 +19,7 @@ function createTriggerElement(name, occupants) {
 }
 
 const App = () => {
-  const buildings = [{name: "Rec Center"}, {name: "Admin Buiding"}, {name: "Dining Hall"}]
+  const buildings = [{name: "Rec Center"}, {name: "Admin Building"}, {name: "Dining Hall"}]
   buildings.forEach(building => {building.occupants = Math.floor(Math.random() * 100);})
   return (
     <div id="list-body">
@@ -28,13 +28,13 @@ const App = () => {
       buildings.map(building => (
         <li id="list-body-li">
             <Collapsible trigger={createTriggerElement(building.name, building.occupants)}>  
-            <p>This is a building. You can do these activities here. Enjoy your time at the builidng!</p>
-            <ul class="building-info">
-              <li>Address:</li>
-              <li>Hours:</li>
-              <li>Amenities:</li>
-              <li>Capacity:</li>
-            </ul>
+              <p>This is a building. You can do these activities here. Enjoy your time at the builidng!</p>
+              <ul class="building-info">
+                <li>Address:</li>
+                <li>Hours:</li>
+                <li>Amenities:</li>
+                <li>Capacity:</li>
+              </ul>
           </Collapsible>
         </li>
       ))
