@@ -48,7 +48,7 @@ function createTriggerElement(name, occupants) {
 const App = () => (
   <Switch>
     <Route exact path='/' component={Dashboard}></Route>
-    <Route exact path='/admin' component={Admin}></Route>
+    <Route exact path='/admin' component={Forms}></Route>
   </Switch>
 );
 
@@ -128,7 +128,14 @@ const Dashboard = () => {
   );
 };
 
-class Admin extends React.Component {
+const Forms = () => (
+  <div class="admin">
+    <OccupancyForm/>
+    <EventForm/>
+  </div>
+);
+
+class OccupancyForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -168,6 +175,61 @@ class Admin extends React.Component {
         <input type='submit' value='Submit'></input>
       </form>
     </div>
+    )
+  }
+}
+
+class EventForm extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      building_id: 0,
+      time: 0, 
+      date: 0, 
+      name: 'event-name'
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleBuildingIdChange = this.handleBuildingIdChange.bind(this);
+    this.handleTimeChange = this.handleTimeChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+  }
+
+
+  handleBuildingIdChange(event) {
+    this.setState({building_id: event.target.value});
+  }
+
+  handleTimeChange(event) {
+    this.setState({time: event.target.value})
+  }
+
+  handleDateChange(event) {
+    this.setState({date: event.target.value})
+  }
+
+  handleNameChange(event) {
+    this.setState({name: event.target.value})
+  }
+
+  handleSubmit(event) {
+    const dataBody = {building_id: this.state.building_id, time: this.state.time, date: this.state.date, name: this.state.name};
+    axios.post("http://localhost:3000/api/events", dataBody)
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          Building ID: <input type="text" value={this.state.building_id} onChange={this.handleBuildingIdChange}></input> 
+          Time: <input type="text" value={this.state.time} onChange={this.handleTimeChange}></input> 
+          Date: <input type="text" value={this.state.date} onChange={this.handleDateChange}></input> 
+          Name: <input type="text" value={this.state.name} onChange={this.handleNameChange}></input> 
+          <input type='submit' value='Submit'></input>
+        </form>
+      </div>
     )
   }
 }
