@@ -3,6 +3,7 @@ import Collapsible from 'react-collapsible';
 import ProgressBar from "react-customizable-progressbar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 
 function updateProgressColor(occupants) {
@@ -35,7 +36,20 @@ function createTriggerElement(name, occupants) {
   )
 }
 
-const App = () => {
+const App = () => (
+  <div className="app">
+    <Main/>
+  </div>
+);
+
+const Main = () => (
+  <Switch>
+    <Route exact path='/' component={Dashboard}></Route>
+    <Route exact path='/admin' component={Admin}></Route>
+  </Switch>
+);
+
+const Dashboard = () => {
   const buildings = [{name: "Parker Storck's Rec Center for Swole Folks", id: 1}, {name: "Admin Building", id: 2}, {name: "Dining Hall", id: 3}]
   buildings.forEach(building => {building.occupants = Math.floor(Math.random() * 100);})
   return (
@@ -75,5 +89,15 @@ const App = () => {
     </div>
   );
 };
+
+const Admin = () => {
+  console.log("Admin hit");
+  return (
+    <div class="admin">
+      <p>Hello</p>
+    </div>
+  );
+}
+
 
 export default App;

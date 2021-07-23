@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "pg": "^8.6.0",
+    "react-router-dom": "^5.2.0",
     "ronin-mocks": "^0.1.6",
     "ronin-server": "^0.1.3"
   }
