@@ -12,6 +12,11 @@ function createNewBuilding(address, phonenumber, hours, maxoccupancy, curroccupa
   axios.post('http://localhost:3000/api/buildings' , dataBody);
 }
 
+function createNewEvent(time, date, building_id, name) {
+  const dataBody = {time: time, date: date, building_id: building_id, name: name}
+  axios.post('http://localhost:3000/api/events', dataBody); 
+}
+
 function updateProgressColor(occupants) {
   if (occupants <= 70) return '#aed136';
   else return 'red';
@@ -43,10 +48,14 @@ function createTriggerElement(name, occupants) {
 const App = () => {
   const [isLoading, setLoading] = useState(true);
   const [buildings, setBuildings] = useState();
+  const [events, setEvents] = useState();
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/buildings').then(response => {
       setBuildings(response.data);
+    });
+    axios.get('http://localhost:3000/api/events').then(response => {
+      setEvents(response.data);
       setLoading(false);
     });
   }, []);
@@ -94,7 +103,11 @@ const App = () => {
                 <div class="event-list-container">
                   <p>Upcoming Events</p>
                   <ul class="events-list">
-                    <li></li>
+                    {
+                      events.filter(event => event.building_id == building.id).map((event) => (
+                        <li>{event.name}</li>
+                      ))
+                    }
                   </ul>
                 </div>
               </div>

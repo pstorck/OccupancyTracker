@@ -34,9 +34,9 @@ const createBuilding = (request, response) => {
 }
 
 const createEvent = (request, response) => {
-    const { time, date, building_id } = request.body
+    const { time, date, building_id, name} = request.body
 
-    client.query('INSERT INTO buildings (time, date, building_id) VALUES ($1, $2, $3)', [time, date, building_id], (error, result) => {
+    client.query('INSERT INTO events (time, date, building_id, name) VALUES ($1, $2, $3, $4)', [time, date, building_id, name], (error, result) => {
         if (error) {
             throw error
         }
@@ -57,6 +57,15 @@ const getEventsForBuilding = (request, response) => {
     const building_id = parseInt(request.params.building_id)
 
     client.query('SELECT * FROM events WHERE building_id = $1', [building_id], (error, result) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json(result.rows)
+    })
+}
+
+const getEvents = (request, response) => {
+    client.query('SELECT * FROM events', (error, result) => {
         if (error) {
             throw error
         }
@@ -86,4 +95,4 @@ const updateBuildingOccupancy = (request, response) => {
     })
 }
 
-module.exports = {createBuilding, createEvent, getEventsForBuilding, getBuildings, deleteEvent, updateBuildingOccupancy}
+module.exports = {createBuilding, createEvent, getEventsForBuilding, getBuildings, deleteEvent, updateBuildingOccupancy, getEvents}
