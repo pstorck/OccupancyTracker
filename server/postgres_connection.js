@@ -74,8 +74,9 @@ const getBuildings = (request, response) => {
 }
 
 const updateBuildingOccupancy = (request, response) => {
-    const building_id = parseInt(request.params.building_id)
-    const { amount } = request.body
+    const building_id = parseInt(request.params.id)
+    const amount = parseInt(request.params.amount)
+    console.log("AMOUNT IS " + amount); 
 
     client.query('UPDATE buildings SET curroccupancy = curroccupancy + $1 WHERE id = $2', [amount, building_id], (error, result) => {
         if (error) {
