@@ -15,8 +15,13 @@ app.post('/api/buildings', connection.createBuilding);
 app.post('/api/events', connection.createEvent); 
 app.delete('/api/events/:id', connection.deleteEvent); 
 app.get('/api/buildings', connection.getBuildings); 
+<<<<<<< HEAD
 app.get('/api/events/building_id', connection.getEventsForBuilding); 
 app.put('/api/buildings/:id', connection.updateBuildingOccupancy); 
+=======
+app.get('/api/events/:building_id', connection.getEventsForBuilding); 
+app.put('/api/buildings/:id/:amount', connection.updateBuildingOccupancy); 
+>>>>>>> master
 
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
