@@ -142,7 +142,7 @@ class Admin extends React.Component {
     let amount = this.state.amount;
     console.log(id, amount);
     const dataBody = {amount: this.state.amount};
-    axios.post("http://localhost:3000/api/buildings/" + this.state.id, dataBody)
+    axios.put("http://localhost:3000/api/buildings/" + this.state.id + '/' + this.state.amount, dataBody)
     event.preventDefault();
   }
 
