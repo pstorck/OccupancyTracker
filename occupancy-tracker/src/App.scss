@@ -109,7 +109,6 @@ body {
 .Collapsible__contentInner {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
-  margin-top: 5%;
 }
 
 .Collapsible__contentOuter {
@@ -126,18 +125,45 @@ body {
 .chevron-down {
   font-family: 'Courier New', Courier, monospace;
   width: 20px;
-  margin-top: 18px;
+  margin-top: 10px;
 }
 
+.all-info-container {
+  display: grid;
+  grid-template-columns: .7fr .3fr;
+  padding: 15px;
+}
 
-#building-info {
+.building-info {
+  font-size: 16px;
+  padding: 5px;
+}
+
+.building-info ul{
   list-style-type: disc;
   border-bottom: none;
 }
 
+.event-list-container {
+  font-size: 12px;
+  background-color: lightgray;
+  padding:5px;
+  border-radius: 5px;
+}
+
+.events-list {
+  list-style-type: disc;
+}
+
+
+.building-name {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
 .trigger {
   display: grid;
-  grid-template-columns: 1fr 1fr .2fr;
+  grid-template-columns: 1fr .5fr .2fr;
   // background-color: #cfe096;
   background-color: #fcfff2;
 }
