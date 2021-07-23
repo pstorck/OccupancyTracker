@@ -1,5 +1,4 @@
-<<<<<<< HEAD
 node_modules
-=======
-node_modules/
->>>>>>> 460f0d28c58a223d2685ba380db0bb10539128c1
+package.json
+package-lock.json
+occupancy-tracker/package*.json

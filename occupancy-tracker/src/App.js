@@ -13,13 +13,13 @@ function updateProgressColor(occupants) {
 function createTriggerElement(name, occupants) {
   return (
     <div class="trigger">
-      <p class="vertically-center">{name}</p>
+      <p class="vertically-center building-name">{name}</p>
       <ProgressBar 
         class="progress-bar" 
         progress={occupants} 
         radius={50}
         strokeColor={updateProgressColor(occupants)}
-        strokeWidth={20}
+        strokeWidth={15}
         strokeLinecap="butt"
         trackStrokeLinecap="butt"
         trackStrokeWidth={10}
@@ -36,7 +36,7 @@ function createTriggerElement(name, occupants) {
 }
 
 const App = () => {
-  const buildings = [{name: "Rec Center", id: 1}, {name: "Admin Building", id: 2}, {name: "Dining Hall", id: 3}]
+  const buildings = [{name: "Parker Storck's Rec Center for Swole Folks", id: 1}, {name: "Admin Building", id: 2}, {name: "Dining Hall", id: 3}]
   buildings.forEach(building => {building.occupants = Math.floor(Math.random() * 100);})
   return (
     <div id="list-body">
@@ -44,14 +44,28 @@ const App = () => {
       {
         buildings.map((building) => (
           <li id="list-body-li" key={building.id}>
-              <Collapsible trigger={createTriggerElement(building.name, building.occupants)}>  
-                <p>This is a building. You can do these activities here. Enjoy your time at the builidng!</p>
-                <ul class="building-info">
-                  <li>Address:</li>
-                  <li>Hours:</li>
-                  <li>Amenities:</li>
-                  <li>Capacity:</li>
-                </ul>
+              <Collapsible trigger={createTriggerElement(building.name, building.occupants)}>
+              <div class="all-info-container">
+                <div class="building-info">
+                  <p>
+                    This is a building. You can do these activities here. Enjoy your time at the building. Now I am adding 
+                    extra sentences to see how a longer description looks in the app. I don't know any of that Latin filler
+                    text so this will have to do.
+                  </p>
+                  <ul>
+                    <li>Address:</li>
+                    <li>Hours:</li>
+                    <li>Amenities:</li>
+                    <li>Capacity:</li>
+                  </ul>
+                </div>
+                <div class="event-list-container">
+                  <p>Upcoming Events</p>
+                  <ul class="events-list">
+                    <li></li>
+                  </ul>
+                </div>
+              </div>
             </Collapsible>
             <div id="li-spacer"></div>
           </li>
