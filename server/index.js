@@ -15,7 +15,7 @@ app.post('/api/buildings', connection.createBuilding);
 app.post('/api/events', connection.createEvent); 
 app.delete('api/events/:id', connection.deleteEvent); 
 app.get('api/buildings', connection.getBuildings); 
-app.get('/api/events/:building_id', connection.getEventsForBuilding); 
+app.get('/api/events/building_id', connection.getEventsForBuilding); 
 app.put('/api/buildings/:id', connection.updateBuildingOccupancy); 
 
 app.get("/api", (req, res) => {

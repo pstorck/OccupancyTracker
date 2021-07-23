@@ -4,6 +4,7 @@ import ProgressBar from "react-customizable-progressbar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { Switch, Route } from 'react-router-dom';
+import axios from 'axios';
 import './App.scss';
 
 function updateProgressColor(occupants) {
@@ -90,14 +91,48 @@ const Dashboard = () => {
   );
 };
 
-const Admin = () => {
-  console.log("Admin hit");
-  return (
-    <div class="admin">
-      <p>Hello</p>
-    </div>
-  );
-}
+class Admin extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      id: 0,
+      amount: 0
+    }
 
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleIdChange = this.handleIdChange.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
+  }
+
+
+  handleIdChange(event) {
+    this.setState({id: event.target.value});
+  }
+
+  handleAmountChange(event) {
+    this.setState({amount: event.target.value})
+  }
+
+  handleSubmit(event) {
+    let id = this.state.id;
+    let amount = this.state.amount;
+    console.log(id, amount);
+    const dataBody = {amount: this.state.amount};
+    axios.post("http://localhost:3000/api/buildings/" + this.state.id, dataBody)
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+    <div class="admin">
+      <form onSubmit={this.handleSubmit}>
+        Building ID: <input type="text" value={this.state.id} onChange={this.handleIdChange}></input> 
+        Occupancy: <input type="number" value={this.state.amount} onChange={this.handleAmountChange}></input> 
+        <input type='submit' value='Submit'></input>
+      </form>
+    </div>
+    )
+  }
+}
 
 export default App;
