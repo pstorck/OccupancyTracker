@@ -1,6 +1,8 @@
 var fs = require('fs');
 var pg = require('pg');
 
+//Writing a comment for something to commit
+
 /* 
  * You can also use the connectionString option for convenience but
  * if you do that you MUST remove `sslmode=require` from the URI else
