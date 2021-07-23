@@ -40,7 +40,14 @@ function createTriggerElement(name, occupants) {
   )
 }
 
-const App = () => {
+const App = () => (
+  <Switch>
+    <Route exact path='/' component={Dashboard}></Route>
+    <Route exact path='/admin' component={Admin}></Route>
+  </Switch>
+);
+
+const Dashboard = () => {
   const [isLoading, setLoading] = useState(true);
   const [buildings, setBuildings] = useState();
 
