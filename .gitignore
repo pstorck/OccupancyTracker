@@ -1,5 +1,1 @@
-node_modules/
-package.json
-package-lock.json
-occupancy-tracker/package.json
-occupancy-tracker/package-lock.json
+node_modules
