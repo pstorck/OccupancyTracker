@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Collapsible from 'react-collapsible';
 import ProgressBar from "react-customizable-progressbar";
-import axios  from 'axios'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { Switch, Route } from 'react-router-dom';
